@@ -1,9 +1,13 @@
 # SolarBI Trabajo BI
 
 **Asignatura:** Inteligencia de Negocios - Grupo 50
+
 **Integrantes:** Isabella Aristizabal Diaz y Valentina Alejandra Pérez Cardona
+
 **Universidad:** Institución Universitaria Pascual Bravo
+
 **Semestre:** 2026-2 
+
 **Docente:** Ramiro Grisales Montoya
 
 Pipeline Bronze → Silver → Gold sobre telemetría solar simulada (lecturas cada 5 min), cargado de forma constante en PostgreSQL y consumido por Grafana (operación) y Power BI (negocio).
