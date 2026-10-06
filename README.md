@@ -90,4 +90,4 @@ Requisitos: Python 3.10+, PostgreSQL, Grafana y Power BI Desktop. Todos los coma
 
 ## Documentación
 
-El informe completo (Parte A, Parte B y referencias) está en [docs/informe_consulta.md](docs/informe_consulta.md).
+El informe completo 
