@@ -1,0 +1,29 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Python
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Power BI (caché y configuración local)
+*.pbix
+powerbi/**/.pbi/localSettings.json
+powerbi/**/.pbi/cache.abf
+
+# SO / IDE
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+~$*
