@@ -2,6 +2,7 @@
 .env
 .env.*
 !.env.example
+.claude
 
 # Python
 venv/
@@ -11,6 +12,35 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .ipynb_checkpoints/
+
+#  Archivos del Sistema Operativo
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+*~
+.directory
+.Trash-*
+
+# Entornos de Desarrollo e IDEs
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
 
 # Logs
 *.log
@@ -27,3 +57,17 @@ desktop.ini
 .vscode/
 .idea/
 ~$*
+
+# Salidas de Compilación / Bundlers / Cache (Vite, Webpack, Parcel, LiveServer)
+dist/
+build/
+out/
+.cache/
+.parcel-cache/
+
+# Playwright E2E
+/test-results/
+/e2e-report/
+/playwright-report/
+/playwright/.cache/
+
