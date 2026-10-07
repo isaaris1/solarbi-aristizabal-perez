@@ -1,0 +1,134 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_POSTGRES",
+      "label": "PostgreSQL SolarBI",
+      "description": "PostgreSQL localhost:5432/solarbi",
+      "type": "datasource",
+      "pluginId": "grafana-postgresql-datasource",
+      "pluginName": "PostgreSQL"
+    }
+  ],
+  "__requires": [
+    { "type": "grafana", "id": "grafana", "name": "Grafana", "version": "10.0.0" },
+    { "type": "datasource", "id": "grafana-postgresql-datasource", "name": "PostgreSQL", "version": "1.0.0" },
+    { "type": "panel", "id": "timeseries", "name": "Time series", "version": "" },
+    { "type": "panel", "id": "stat", "name": "Stat", "version": "" }
+  ],
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "id": 1,
+      "title": "Potencia AC e Irradiancia (5 min)",
+      "type": "timeseries",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "${DS_POSTGRES}" },
+      "gridPos": { "h": 10, "w": 18, "x": 0, "y": 0 },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "palette-classic" },
+          "custom": { "drawStyle": "line", "lineWidth": 1, "fillOpacity": 10, "showPoints": "never", "spanNulls": false, "axisPlacement": "auto" },
+          "unit": "kwatt"
+        },
+        "overrides": [
+          {
+            "matcher": { "id": "byName", "options": "Irradiancia (W/m2)" },
+            "properties": [
+              { "id": "unit", "value": "Wm2" },
+              { "id": "custom.axisPlacement", "value": "right" }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true },
+        "tooltip": { "mode": "multi", "sort": "none" }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "${DS_POSTGRES}" },
+          "format": "time_series",
+          "rawQuery": true,
+          "editorMode": "code",
+          "rawSql": "SELECT ts AS \"time\", p_ac_kw AS \"Potencia AC (kW)\", irradiancia_wm2 AS \"Irradiancia (W/m2)\"\nFROM silver.lectura_5min\nWHERE $__timeFilter(ts) AND dispositivo_id = '$dispositivo'\nORDER BY ts ASC;"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "% Datos válidos",
+      "type": "stat",
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "${DS_POSTGRES}" },
+      "gridPos": { "h": 10, "w": 6, "x": 18, "y": 0 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "decimals": 2,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "yellow", "value": 80 },
+              { "color": "green", "value": 95 }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "textMode": "value",
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "grafana-postgresql-datasource", "uid": "${DS_POSTGRES}" },
+          "format": "table",
+          "rawQuery": true,
+          "editorMode": "code",
+          "rawSql": "SELECT pct_datos_validos AS \"% Datos válidos\"\nFROM dwh.fact_energia_dia\nWHERE dispositivo_key = '$dispositivo'\nORDER BY fecha DESC\nLIMIT 1;"
+        }
+      ]
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "tags": ["solarbi", "grupo-50", "pascual-bravo"],
+  "templating": {
+    "list": [
+      {
+        "name": "dispositivo",
+        "label": "Dispositivo",
+        "type": "query",
+        "datasource": { "type": "grafana-postgresql-datasource", "uid": "${DS_POSTGRES}" },
+        "definition": "SELECT DISTINCT dispositivo_id FROM silver.lectura_5min;",
+        "query": "SELECT DISTINCT dispositivo_id FROM silver.lectura_5min;",
+        "refresh": 1,
+        "sort": 3,
+        "multi": false,
+        "includeAll": false,
+        "hide": 0,
+        "current": {},
+        "options": []
+      }
+    ]
+  },
+  "time": { "from": "2026-10-05T00:00:00", "to": "2026-10-08T00:00:00" },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "SolarBI Pascual - Operación en tiempo real",
+  "uid": "solarbi-g50",
+  "version": 1
+}
