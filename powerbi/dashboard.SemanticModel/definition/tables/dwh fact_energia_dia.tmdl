@@ -1,0 +1,79 @@
+table 'dwh fact_energia_dia'
+	lineageTag: cdc70f87-24c8-4d6d-a3a6-80bd05909244
+
+	measure Total_Energia_kWh = SUM('dwh fact_energia_dia'[energia_kwh])
+		lineageTag: a708b458-1db0-4ae9-bacc-bea8c12b850e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure TarifaCOP = 800
+		formatString: 0
+		lineageTag: 6a743a02-99fc-45ca-a692-e6bebcbd0b12
+
+	measure Yield_kWh_kWp = DIVIDE([Total_Energia_kWh], 5.0, 0)
+		lineageTag: a88dade3-f2b2-451f-adff-2d69d0678d0f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Ahorro_COP = [Total_Energia_kWh] * [TarifaCOP]
+		formatString: \$\ #,0.000;-\$\ #,0.000;\$\ #,0.000
+		lineageTag: 63cdf148-36e7-4cfc-8fb9-128093c68a23
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-CO"}
+
+	column fecha
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5c630334-b3b6-4d7c-aed1-f8f4f688df47
+		summarizeBy: none
+		sourceColumn: fecha
+
+		variation Variación
+			isDefault
+			relationship: 2956e226-20d4-4f16-8594-ccf9c0127306
+			defaultHierarchy: LocalDateTable_0b1a50e0-a96f-4fb0-a62a-88cddde5897c.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dispositivo_key
+		dataType: int64
+		formatString: 0
+		lineageTag: cc167259-a8b9-4f12-ad99-288a23502563
+		summarizeBy: sum
+		sourceColumn: dispositivo_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column energia_kwh
+		dataType: double
+		lineageTag: 4170b0c6-dba5-41e0-be35-13209f50172d
+		summarizeBy: sum
+		sourceColumn: energia_kwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pct_datos_validos
+		dataType: double
+		lineageTag: d8c314f6-e6bf-492e-add4-976f9574418e
+		summarizeBy: sum
+		sourceColumn: pct_datos_validos
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'dwh fact_energia_dia' = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("localhost:5432", "solarbi"),
+				    dwh_fact_energia_dia = Origen{[Schema="dwh",Item="fact_energia_dia"]}[Data]
+				in
+				    dwh_fact_energia_dia
+
+	annotation PBI_ResultType = Table
+
