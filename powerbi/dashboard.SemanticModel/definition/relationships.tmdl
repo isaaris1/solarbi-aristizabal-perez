@@ -1,0 +1,5 @@
+relationship 2956e226-20d4-4f16-8594-ccf9c0127306
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'dwh fact_energia_dia'.fecha
+	toColumn: LocalDateTable_0b1a50e0-a96f-4fb0-a62a-88cddde5897c.Date
+

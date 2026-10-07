@@ -1,0 +1,21 @@
+model Model
+	culture: es-CO
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-CO
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["dwh fact_energia_dia"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'dwh fact_energia_dia'
+ref table DateTableTemplate_9ec31e56-1762-449c-a968-570903079eb3
+ref table LocalDateTable_0b1a50e0-a96f-4fb0-a62a-88cddde5897c
+
+ref cultureInfo es-CO
+

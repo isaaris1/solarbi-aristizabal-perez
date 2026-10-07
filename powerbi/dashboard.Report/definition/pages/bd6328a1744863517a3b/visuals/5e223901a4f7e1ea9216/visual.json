@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "5e223901a4f7e1ea9216",
+  "position": {
+    "x": 1390,
+    "y": 0,
+    "z": 1,
+    "height": 540,
+    "width": 530,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dwh fact_energia_dia"
+                    }
+                  },
+                  "Property": "Yield_kWh_kWp"
+                }
+              },
+              "queryRef": "dwh fact_energia_dia.Yield_kWh_kWp",
+              "nativeQueryRef": "Yield_kWh_kWp"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dwh fact_energia_dia"
+                  }
+                },
+                "Property": "Yield_kWh_kWp"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "60D"
+                }
+              }
+            },
+            "horizontalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "139c11763f1952e83e35",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dwh fact_energia_dia"
+              }
+            },
+            "Property": "Yield_kWh_kWp"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
