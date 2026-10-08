@@ -19,7 +19,7 @@ solarbi-aristizabal-perez/
 ├── README.md
 ├── .gitignore
 ├── docs/
-│   └── informe_consulta.md
+│   └── Isabella_Aritizabal_Diaz_Valentina_Alejandra_Perez_Cardona.pdf (Informe de la consulta)
 ├── data/
 │   ├── bronze/telemetria.csv
 │   └── silver/telemetria_limpia.csv
@@ -89,9 +89,9 @@ Requisitos: Python 3.10+, PostgreSQL, Grafana y Power BI Desktop. Todos los coma
 
 | Integrante | Rol | Aportes |
 |---|---|---|
-| Isabella Aristizábal | | |
-| Valentina Pérez |  | |
+| Pérez | Data Engineer | Estructura inicial del repositorio y README base; esquemas `silver` y `dwh` en `sql/init.sql`; simulador de telemetría y capa Bronze; pipeline ETL idempotente con carga a Silver y Gold. |
+| Aristizábal | BI Analyst / Data Modeler | Modelo, medidas DAX y visuales en Power BI; dashboard operativo en Grafana con la variable `$dispositivo`; informe de consulta (Partes A y B); documentación final del README. |
 
 ## Documentación
 
-El informe completo 
+El informe completo se encuentra ubicado en docs/Isabella_Aritizabal_Diaz_Valentina_Alejandra_Perez_Cardona.pdf
