@@ -18,8 +18,9 @@ Pipeline Bronze → Silver → Gold sobre telemetría solar simulada (lecturas c
 solarbi-aristizabal-perez/
 ├── README.md
 ├── .gitignore
+├── .env.example
 ├── docs/
-│   └── Isabella_Aritizabal_Diaz_Valentina_Alejandra_Perez_Cardona.pdf (Informe de la consulta)
+│   └── Isabella_Aristizabal_Diaz_Valentina_Alejandra_Perez_Cardona_Consulta_BI_G50.pdf (Informe de la consulta)
 ├── data/
 │   ├── bronze/telemetria.csv
 │   └── silver/telemetria_limpia.csv
@@ -53,7 +54,7 @@ Requisitos: Python 3.10+, PostgreSQL, Grafana y Power BI Desktop. Todos los coma
    psql -U postgres -d solarbi -f sql/init.sql
    ```
 
-3. Credenciales: crear un archivo `.env` en la raíz (no se versiona) con `DB_USER`, `DB_PASS`, `DB_HOST`, `DB_PORT` y `DB_NAME`. Sin `.env` se usan los valores por defecto `postgres` / `localhost` / `5432` / `solarbi`.
+3. Credenciales: copiar `.env.example` a `.env` en la raíz y poner la contraseña real en `DB_PASS` (el archivo `.env` no se versiona). `DB_PASS` no tiene valor por defecto; sin él el pipeline no arranca. Los demás valores por defecto son `postgres` / `localhost` / `5432` / `solarbi`.
 
 4. Generar la capa Bronze (`data/bronze/telemetria.csv`):
 
@@ -94,4 +95,4 @@ Requisitos: Python 3.10+, PostgreSQL, Grafana y Power BI Desktop. Todos los coma
 
 ## Documentación
 
-El informe completo se encuentra ubicado en docs/Isabella_Aritizabal_Diaz_Valentina_Alejandra_Perez_Cardona.pdf
+El informe completo se encuentra ubicado en docs/Isabella_Aristizabal_Diaz_Valentina_Alejandra_Perez_Cardona_Consulta_BI_G50.pdf
