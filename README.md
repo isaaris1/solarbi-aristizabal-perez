@@ -93,6 +93,8 @@ Requisitos: Python 3.10+, PostgreSQL, Grafana y Power BI Desktop. Todos los coma
 | Valentina Alejandra Pérez Cardona | Data Engineer | Estructura inicial del repositorio y README base; esquemas `silver` y `dwh` en `sql/init.sql`; simulador de telemetría y capa Bronze; pipeline ETL idempotente con carga a Silver y Gold. |
 | Isabella Aristizabal Díaz | BI Analyst / Data Modeler | Modelo, medidas DAX y visuales en Power BI; dashboard operativo en Grafana con la variable `$dispositivo`; informe de consulta (Partes A y B); documentación final del README. |
 
+## Frase en ingles
+"One governed dataset, two views: Grafana for real-time operations and Power BI for business decisions."
 ## Documentación
 
 El informe completo se encuentra ubicado en docs/Isabella_Aristizabal_Diaz_Valentina_Alejandra_Perez_Cardona_Consulta_BI_G50.pdf
