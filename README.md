@@ -19,7 +19,7 @@ solarbi-aristizabal-perez/
 ├── README.md
 ├── .gitignore
 ├── docs/
-│   └── informe_consulta.md
+│   └── Isabella_Aritizabal_Diaz_Valentina_Alejandra_Perez_Cardona.pdf (Informe de la consulta)
 ├── data/
 │   ├── bronze/telemetria.csv
 │   └── silver/telemetria_limpia.csv
