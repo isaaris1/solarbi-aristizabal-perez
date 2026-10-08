@@ -94,4 +94,4 @@ Requisitos: Python 3.10+, PostgreSQL, Grafana y Power BI Desktop. Todos los coma
 
 ## Documentación
 
-El informe completo 
+El informe completo se encuentra ubicado en docs/Isabella_Aritizabal_Diaz_Valentina_Alejandra_Perez_Cardona.pdf
